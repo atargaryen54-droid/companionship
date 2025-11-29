@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalmCo - Supportive Companionship for Everyday Moments</title>
+    <meta name="description" content="A safe, respectful, and professional companionship service designed with women in mind. Life feels lighter when you don’t have to do everything alone.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f2fcf5',
+                            100: '#e1f8e8',
+                            200: '#c3efd4',
+                            300: '#94e0b5',
+                            400: '#5cc791',
+                            500: '#36ab76',
+                            600: '#268a5d',
+                            700: '#216e4d',
+                            800: '#1d573f',
+                            900: '#194836',
+                        },
+                        warm: {
+                            50: '#fffbf0',
+                            100: '#fef5d6',
+                            200: '#fcecb3',
+                            300: '#fade85',
+                            400: '#f9cf55',
+                            500: '#f5b52a',
+                            600: '#d99016',
+                        },
+                        sand: '#fdfbf7'
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-pattern {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#f5b52a 0.5px, transparent 0.5px), radial-gradient(#36ab76 0.5px, #fdfbf7 0.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-sand antialiased selection:bg-warm-200 selection:text-brand-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="scrollToTop()">
+                    <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-seedling text-brand-500 text-xl"></i>
+                    </div>
+                    <span class="font-serif text-2xl font-semibold text-gray-800 tracking-tight">CalmCo</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="nav-link text-gray-600 hover:text-brand-600 font-medium transition cursor-pointer">About</a>
+                    <a href="#services" class="nav-link text-gray-600 hover:text-brand-600 font-medium transition cursor-pointer">Requests</a>
+                    <a href="#values" class="nav-link text-gray-600 hover:text-brand-600 font-medium transition cursor-pointer">Values</a>
+                    <a href="#pricing" class="nav-link text-gray-600 hover:text-brand-600 font-medium transition cursor-pointer">Pricing</a>
+                    <a href="#contact" class="nav-link px-6 py-2.5 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 transition shadow-lg hover:shadow-brand-300/50 cursor-pointer">
+                        Book a Session
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="nav-link block px-3 py-3 text-base font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-md">About</a>
+                <a href="#services" class="nav-link block px-3 py-3 text-base font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-md">Requests</a>
+                <a href="#values" class="nav-link block px-3 py-3 text-base font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-md">Values</a>
+                <a href="#pricing" class="nav-link block px-3 py-3 text-base font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-md">Pricing</a>
+                <a href="#contact" class="nav-link block px-3 py-3 text-base font-medium text-brand-600 font-bold bg-brand-50 rounded-md">Book a Session</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 hero-pattern -z-10"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-warm-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="inline-flex items-center gap-2 py-1 px-4 rounded-full bg-warm-100 text-warm-700 text-sm font-semibold tracking-wide uppercase mb-6 fade-in-up border border-warm-200">
+                <i class="fa-solid fa-heart text-warm-500"></i> Designed with Women in Mind
+            </span>
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-gray-900 mb-6 leading-tight fade-in-up" style="transition-delay: 100ms;">
+                Supportive Companionship for<br><span class="text-brand-600">Everyday Moments</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600 mb-8 fade-in-up" style="transition-delay: 200ms;">
+                Life feels lighter when you don’t have to do everything alone. A safe, respectful, and professional service providing reliable company for your daily activities.
+            </p>
+            <p class="mb-10 text-brand-700 font-medium italic fade-in-up" style="transition-delay: 250ms;">
+                It’s simply human presence, comfort, and practical support.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in-up" style="transition-delay: 300ms;">
+                <a href="#contact" class="nav-link px-8 py-4 bg-brand-600 text-white rounded-full font-semibold hover:bg-brand-700 transition shadow-lg hover:shadow-brand-400/50 flex items-center justify-center gap-2">
+                    Book a Session <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="#services" class="nav-link px-8 py-4 bg-white text-brand-700 border border-brand-200 rounded-full font-semibold hover:bg-brand-50 transition shadow-sm flex items-center justify-center">
+                    See Services
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Why We Exist (About) -->
+    <section id="about" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-warm-50 rounded-3xl p-8 md:p-16 border border-warm-100 shadow-sm relative overflow-hidden fade-in-up">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full mix-blend-overlay opacity-50 -mr-16 -mt-16"></div>
+                
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-8 text-center">
+                        Created with Women’s Comfort and Safety at the Center 💛
+                    </h2>
+                    <p class="text-lg text-gray-600 text-center mb-10 leading-relaxed">
+                        CalmCo exists to make everyday life easier for women who want:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Company when going out in the city</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Someone trustworthy to ensure they get home safely</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">A calm, respectful presence for a night out</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Someone responsible to accompany them on a walk</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">Support during social events or gatherings</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-brand-500 shadow-sm flex-shrink-0 mt-1">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <span class="text-gray-700">A listening ear during stressful weeks</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-10 text-center pt-8 border-t border-warm-200">
+                        <p class="font-medium text-gray-800">Your safety and boundaries always come first.</p>
+                        <p class="text-gray-500 text-sm mt-2">You set the tone — conversation, quiet company, or anything in between.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Can Request -->
+    <section id="services" class="py-20 bg-sand relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-brand-600 font-semibold tracking-wider text-sm uppercase">Services</span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mt-2 mb-4">What You Can Request</h2>
+                <div class="w-20 h-1 bg-warm-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up">
+                    <div class="w-14 h-14 bg-warm-50 rounded-full flex items-center justify-center text-warm-500 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-warm-100">
+                        <i class="fa-regular fa-sun"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gentle Companionship</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        A calm, friendly presence to accompany you to cafes, parks, or daily outings.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-brand-50 rounded-full flex items-center justify-center text-brand-600 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-brand-100">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Errands & City Walks</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Company while shopping, visiting places, or walking around town. 
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-purple-50 rounded-full flex items-center justify-center text-purple-500 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-purple-100">
+                        <i class="fa-solid fa-champagne-glasses"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Event Partner</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Someone reliable to go with you to social events, office gatherings, or meetups — strictly professional.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-blue-500 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-blue-100">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Safe Night Out</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        A companion who stays alert, watches out for your safety, and ensures you get home without trouble.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up" style="transition-delay: 400ms;">
+                    <div class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-green-100">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Short City Trips</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Supportive company for short domestic travel or exploring neighborhoods.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="group p-8 bg-white rounded-2xl border border-gray-100 hover:border-brand-300 hover:shadow-xl transition-all duration-300 fade-in-up" style="transition-delay: 500ms;">
+                    <div class="w-14 h-14 bg-pink-50 rounded-full flex items-center justify-center text-pink-500 text-2xl shadow-sm mb-6 group-hover:scale-110 transition-transform border border-pink-100">
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">A Listener</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Sometimes you just need someone who listens without judgement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values & Promise -->
+    <section id="values" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+        <!-- Abstract Decoration -->
+        <div class="absolute top-0 right-0 w-80 h-80 bg-brand-600 rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-warm-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div class="fade-in-up">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 leading-tight">
+                        Respectful. Professional.<br>
+                        <span class="text-brand-400">Boundaries Always Clear.</span>
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 text-lg">CalmCo practices zero-pressure companionship. Your comfort defines every interaction.</p>
+                        
+                        <div class="bg-gray-800/60 p-6 rounded-xl border border-gray-700">
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <i class="fa-solid fa-xmark text-red-400 w-5"></i> No flirting or romantic involvement
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <i class="fa-solid fa-xmark text-red-400 w-5"></i> No hidden expectations
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <i class="fa-solid fa-xmark text-red-400 w-5"></i> No physical contact (unless initiated as greeting)
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <i class="fa-solid fa-check text-brand-400 w-5"></i> Complete respect for personal space
+                                </li>
+                                <li class="flex items-center gap-3 text-gray-300">
+                                    <i class="fa-solid fa-check text-brand-400 w-5"></i> You control what feels comfortable
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <div class="bg-white text-gray-800 rounded-2xl p-8 shadow-xl">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                                <i class="fa-solid fa-lock text-gray-700 text-xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold font-serif">Privacy & Discretion</h3>
+                        </div>
+                        
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Your safety extends to your data and reputation. We take this seriously.
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="mt-1"><i class="fa-solid fa-user-shield text-brand-600"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wide text-gray-400 mb-1">Private Information</h4>
+                                    <p class="text-gray-800 font-medium">Your information stays private.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="mt-1"><i class="fa-solid fa-mask text-brand-600"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wide text-gray-400 mb-1">Discreet Outings</h4>
+                                    <p class="text-gray-800 font-medium">Your outings stay discreet.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="mt-1"><i class="fa-solid fa-file-contract text-brand-600"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-sm uppercase tracking-wide text-gray-400 mb-1">Confidentiality</h4>
+                                    <p class="text-gray-800 font-medium">Nothing is shared with anyone — ever.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-warm-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-4">Simple, Flexible Pricing</h2>
+            <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Start with affordable rates for short sessions, with transparent pricing for longer outings. No surprises, no hidden fees.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-warm-100 hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Short Sessions</h3>
+                    <div class="flex items-baseline justify-center gap-1 mb-4">
+                        <span class="text-4xl font-bold text-brand-600">300</span>
+                        <span class="text-xl font-semibold text-gray-700">ETB</span>
+                        <span class="text-gray-500">/ hour</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Perfect for coffee, quick walks, or errands.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-warm-100 hover:shadow-md transition">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Events & Night Out</h3>
+                    <div class="flex items-center justify-center h-[52px] mb-4">
+                        <span class="text-2xl font-bold text-gray-800">Custom Quote</span>
+                    </div>
+                    <p class="text-sm text-gray-500">Tailored packages for longer durations or travel.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Book Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-brand-600 to-brand-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row text-white">
+                <div class="p-10 md:p-16 flex-1">
+                    <h2 class="text-3xl font-serif font-bold mb-6">Book a Session</h2>
+                    <p class="text-brand-100 mb-8 text-lg">
+                        We’ll arrange a session built entirely around your comfort.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-brand-200 font-bold text-sm uppercase tracking-wide mb-4">What to tell us:</h4>
+                        <ul class="space-y-2 text-white/90">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-small text-brand-300 text-xs"></i> What you need</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-small text-brand-300 text-xs"></i> Where you want to go</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-small text-brand-300 text-xs"></i> Preference: Quiet, Talkative, or Supportive</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col gap-4">
+                        <a href="tel:+251717772736" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 p-4 rounded-xl transition border border-white/10">
+                            <i class="fa-brands fa-whatsapp text-2xl text-green-400"></i>
+                            <div>
+                                <span class="block text-xs text-brand-200 uppercase">WhatsApp / Telegram / Call</span>
+                                <span class="font-bold text-lg">+251 717 772 736</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-900/50 p-10 md:p-16 flex-1 flex flex-col justify-center border-l border-white/10">
+                    <div class="text-center md:text-left">
+                        <i class="fa-solid fa-star text-warm-400 text-3xl mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4">CalmCo</h3>
+                        <p class="text-lg text-gray-300 leading-relaxed italic">
+                            "Making Everyday Life Lighter, Safer, and More Comfortable for Women."
+                        </p>
+                        
+                        <div class="mt-8 pt-8 border-t border-white/10 flex flex-col gap-2">
+                            <span class="text-sm text-gray-400">Email us at:</span>
+                            <a href="mailto:atargayen54@gmail.com" class="text-lg font-bold hover:text-brand-300 transition">atargayen54@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sand pt-12 pb-8 border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-leaf text-brand-600"></i>
+                <span class="font-serif font-bold text-gray-800 text-lg">CalmCo</span>
+            </div>
+            
+            <p class="text-gray-500 text-sm text-center md:text-right">
+                &copy; 2025 CalmCo Ethiopia. All rights reserved.<br>
+                <span class="text-xs">Professional Companionship Service.</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // --- IMPROVED NAVIGATION SCRIPT ---
+        // This replaces the default browser anchor scrolling with a robust JS solution
+        // to prevent the "buttons only work once" issue.
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Stop the URL from changing immediately
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Calculate precise position (minus navbar height)
+                    const headerOffset = 100; 
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+
+                    // Explicitly close mobile menu if it's open
+                    const menu = document.getElementById('mobile-menu');
+                    if (!menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Scroll to Top Function for Logo
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Intersection Observer for Fade-in Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar Style on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/90', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/90');
+            }
+        });
+    </script>
+</body>
+</html>
