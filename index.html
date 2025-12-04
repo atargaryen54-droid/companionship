@@ -383,7 +383,7 @@
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-warm-100 hover:shadow-md transition">
                     <h3 class="text-xl font-bold text-gray-900 mb-4">Short Sessions</h3>
                     <div class="flex items-baseline justify-center gap-1 mb-4">
-                        <span class="text-4xl font-bold text-brand-600">300</span>
+                        <span class="text-4xl font-bold text-brand-600">400</span>
                         <span class="text-xl font-semibold text-gray-700">ETB</span>
                         <span class="text-gray-500">/ hour</span>
                     </div>
@@ -421,15 +421,42 @@
                         </ul>
                     </div>
 
-                    <div class="flex flex-col gap-4">
-                        <a href="tel:+251717772736" class="flex items-center gap-4 bg-white/10 hover:bg-white/20 p-4 rounded-xl transition border border-white/10">
-                            <i class="fa-brands fa-whatsapp text-2xl text-green-400"></i>
+                    <!-- NEW: Distinct Buttons for WhatsApp, Telegram, Call -->
+                    <div class="flex flex-col gap-3">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/251921772736" target="_blank" class="flex items-center gap-4 bg-white/10 hover:bg-green-500/20 p-4 rounded-xl transition border border-white/10 group">
+                            <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-colors text-green-400">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                            </div>
                             <div>
-                                <span class="block text-xs text-brand-200 uppercase">WhatsApp / Telegram / Call</span>
-                                <span class="font-bold text-lg">+251 717 772 736</span>
+                                <span class="block text-xs text-brand-200 uppercase font-bold">Chat on WhatsApp</span>
+                                <span class="text-white font-medium text-sm">Start a conversation</span>
+                            </div>
+                        </a>
+
+                        <!-- Telegram -->
+                        <a href="https://t.me/+251717772736" target="_blank" class="flex items-center gap-4 bg-white/10 hover:bg-blue-400/20 p-4 rounded-xl transition border border-white/10 group">
+                            <div class="w-10 h-10 rounded-full bg-blue-400/20 flex items-center justify-center group-hover:bg-blue-400 group-hover:text-white transition-colors text-blue-400">
+                                <i class="fa-brands fa-telegram text-xl"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-200 uppercase font-bold">Chat on Telegram</span>
+                                <span class="text-white font-medium text-sm">Send a message</span>
+                            </div>
+                        </a>
+
+                        <!-- Phone Call -->
+                        <a href="tel:+251717772736" class="flex items-center gap-4 bg-white/10 hover:bg-brand-500/20 p-4 rounded-xl transition border border-white/10 group">
+                            <div class="w-10 h-10 rounded-full bg-brand-400/20 flex items-center justify-center group-hover:bg-brand-500 group-hover:text-white transition-colors text-brand-400">
+                                <i class="fa-solid fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-brand-200 uppercase font-bold">Direct Call</span>
+                                <span class="text-white font-bold text-lg">+251 717 772 736</span>
                             </div>
                         </a>
                     </div>
+                    <!-- End New Buttons -->
                 </div>
                 
                 <div class="bg-gray-900/50 p-10 md:p-16 flex-1 flex flex-col justify-center border-l border-white/10">
